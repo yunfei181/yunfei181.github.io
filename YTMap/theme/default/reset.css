@@ -1,0 +1,6 @@
+﻿.clearfix:after {content:'';display:none;clear:both;}
+.clearfix {*zoom:1; }
+.clearfloat {clear:both;height:0;font-size: 1px;line-height: 0px;}
+html, body,ul,li { margin:0; padding:0; }
+ul, li { list-style-type:none; }
+body { font-size:12px; }

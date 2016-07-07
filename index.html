@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>网络地图Demo</title>
+    <link rel="stylesheet" type="text/css" href="Js/ztree/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="Stylesheet" type="text/css" href="YTMap/theme/default/map.css" />
+    <link rel="Stylesheet" type="text/css" href="Css/style.css" />
+    <link rel="stylesheet" type="text/css" href="Js/scroll/jquery.mCustomScrollbar.css" />
+    <script type="text/javascript" src="Js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="Js/jquery.corner.js"></script>
+    <script type="text/javascript" src="Js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="Js/ztree/jquery.ztree.core-3.5.js"></script>
+    <script type="text/javascript" src="Js/ztree/jquery.ztree.excheck-3.5.js"></script>
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   
+    <link rel="stylesheet" href="YTMap/v3/alatu-plot/p-ol3.css" />    
+    <style type="text/css">
+         #info {
+        position: absolute;
+        height: 1px;
+        width: 1px;
+        z-index: 100;
+      }
+      .tooltip.in {
+        opacity: 1;
+      }
+      .tooltip.top .tooltip-arrow {
+        border-top-color: white;
+      }
+      .tooltip-inner {
+        border: 2px solid white;
+      }
+    </style>       
+</head>
+<body>
+     <div id="mapHeader">
+        <div class="header">
+            <div style=" height:70px; background:url(Images/bar.png) no-repeat">
+                 <div class="logo">
+                <img src="Images/Logo.png" alt="" /> 
+            </div>
+            <div style="float:right; padding:5px; ">
+               
+            </div>
+            </div> 
+        </div>
+    </div>
+    <div id="mapMiddle">
+        <div id="mapLeft">
+            <div id="mapChannel" style="position:absolute;left:0;right:0;top:0;">
+                <ul>
+                    <li class="first"></li>
+                    <li id="channelMap" class="checked"><span>地图</span></li>                   
+                    <li id="channelPoi" ><span>地名</span></li>
+                    <li id="channelSearch" ><span>搜索</span></li>
+                    <li id="ChannelSpecial" ><span>专题</span></li>
+                    <li id="chanelPlot" ><span>标绘</span></li>
+                    <li class="last"></li>
+                </ul>
+            </div>
+            <div id="leftContent" >
+                <div id="channelMapContainer">
+                    <div id="mapTree" class="ztree" ></div>
+                </div>           
+                <div id="channelPoiContainer" style="display:none; ">
+                     
+                </div>                
+                <div id="channelSearchContainer" style=" display:none; ">
+                    <div id="panelSearch" style="padding: 5px; margin-top: 5px;">
+                        <input type="text" id="keyword" style="width: 200px;" runat="server" onkeydown="javascript:SubmitKeyClick('btnSearch',event)" />
+                        <input type="button" value="搜索" id="btnSearch" onclick="getSearchPoi()" /><br />
+                        <div style="color: #666; padding: 5px; margin-top: 10px;">温馨提示：关键词之间加入空格可实现模糊查询。</div>
+                      
+                    </div>
+                </div>
+                <div id="ChannelSpecialContainer" style="display:none; ">
+                     <div id="specialTree" class="ztree" ></div>
+                </div>
+                <div id="chanelPlotContainer" style="display:none; ">
+                     <table class="plot" style="font-size:14px;">
+                         <tr>
+                             <td style="width:30px;" valign="top">点标</td>
+                             <td>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.MARKER)"><img src="Images/symbol/point_marker.png" alt="点" /></a>                                
+                             </td>
+                         </tr>
+                         <tr>
+                             <td  valign="top">线标</td>
+                             <td>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.ARC)"><img src="Images/symbol/polyline_arc.png" alt="弧线" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.CURVE)"><img src="Images/symbol/polyline_curve.png" alt="曲线" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.POLYLINE)"><img src="Images/symbol/polyline_line.png" alt="折线" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.FREEHAND_LINE)"><img src="Images/symbol/polyline_free.png" alt="自由线" /></a>                                
+                             </td>
+                         </tr>
+                         <tr>
+                             <td  valign="top">面标</td>
+                             <td>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.CIRCLE)"><img src="Images/symbol/polygon_circle.png" alt="圆" title="圆" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.ELLIPSE)"><img src="Images/symbol/polygon_ellipse.png" alt="椭圆" title="椭圆" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.LUNE)"><img src="Images/symbol/polygon_lune.png" alt="弓形" title="弓形" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.SECTOR)"><img src="Images/symbol/polygon_sector.png" alt="扇形" title="扇形" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.CLOSED_CURVE)"><img src="Images/symbol/polygon_curve.png" alt="曲线面" title="曲线面" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.POLYGON)"><img src="Images/symbol/polygon_polygon.png" alt="多边形" title="多边形" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.RECTANGLE)"><img src="Images/symbol/polygon_rect.png" alt="矩形" title="矩形" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.FREEHAND_POLYGON)"><img src="Images/symbol/polygon_free.png" alt="自由面" title="自由面" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.GATHERING_PLACE)"><img src="Images/symbol/polygon_place.png" alt="聚集地" title="聚集地" /></a>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td  valign="top">箭头</td>
+                             <td>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.DOUBLE_ARROW)"><img src="Images/symbol/arrow_qianji.png" alt="钳击" title="钳击" /></a>
+                                <a href="javascript:void(0)" onclick="activate(P.PlotTypes.STRAIGHT_ARROW)"><img src="Images/symbol/arrow_zhi.png" alt="直箭头" title="直箭头" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.FINE_ARROW)"><img src="Images/symbol/arrow_xizhi.png" alt="细直箭头" title="细直箭头" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.ASSAULT_DIRECTION)"><img src="Images/symbol/arrow_tuji.png" alt="突击方向" title="突击方向" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.ATTACK_ARROW)"><img src="Images/symbol/arrow_jingong.png" alt="进攻方向" title="进攻方向" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.TAILED_ATTACK_ARROW)"><img src="Images/symbol/arrow_jingong_wei.png" alt="进攻方向（尾）" title="进攻方向（尾）" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.SQUAD_COMBAT)"><img src="Images/symbol/arrow_fendui.png" alt="分队战斗行动" title="分队战斗行动" /></a>
+                                 <a href="javascript:void(0)" onclick="activate(P.PlotTypes.TAILED_SQUAD_COMBAT)"><img src="Images/symbol/arrow_fendui_wei.png" alt="分队战斗行动（尾）" title="分队战斗行动（尾）" /></a>                               
+                             </td>
+                         </tr>
+                     </table>
+                </div>         
+            </div>
+            <div id="panelPois"></div>
+        </div>
+        <div id="mapRight">
+            <div id="mapDivContainer">
+                <div id="mapDiv" style="background-color: #fff;"></div>
+                <div class="mapToolsContainer">
+                    <div class="mapTools">
+                        <ul>
+                            <li><a href="javascript:void(0)" onclick="measureMap('none')" class="tool-move">漫游</a></li>
+                            <li><a href="javascript:void(0)" onclick="zoomIn()" class="tool-zoomin">放大</a></li>
+                            <li><a href="javascript:void(0)" onclick="zoomOut()" class="tool-zoomout">缩小</a></li>
+                            <li><a href="javascript:void(0)" onclick="clearOverlay()" class="tool-clear">清除</a> </li>
+                            <li><a href="javascript:void(0)" onclick="zoomWithBox()" class="tool-zoombox">拉框放大</a></li>
+                            <li><a href="javascript:void(0)" id="btnOpenLegendDlg" class="tool-legend">图例</a></li>
+                            <li><a href="javascript:void(0)" onclick="changeFullsrnState()" class="tool-fullsrn"><span id="toolbar_fullsrn_txt">全屏</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mapBorderLeft"></div>
+                <div class="mapBorderTop"></div>
+                <div id="mapExpander" class="expander-right" onclick="changeMapExpanderState()"></div>
+                <div id="alatu-control-container">
+                    <div class="alatu-top alatu-left">
+                        <div class="alatu-control-zoom alatu-bar alatu-control"><a id="zoomInControl" class="alatu-control-zoom-in" href="#" title="放大">+</a><a id="zoomOutControl" class="alatu-control-zoom-out" href="#" title="缩小">-</a></div>
+                    </div>                    
+                </div>
+                <div id="mouse-position" class="alatu-left alatu-bottom" style="padding:10px; margin-left:200px; "></div>
+                <div id="info"></div>
+                <div id="delete-wrapper"><div id="btn-delete" style="display:none;">删 除</div></div>
+            </div>
+        </div>
+    </div>    
+    <script type="text/javascript" src="YTMap/v3/MapConfig.js"></script>
+    <script type="text/javascript" src="YTMap/v3/alatu-plot/PlotConfig.js"></script>
+    <script type="text/javascript" src="YTMap/utils.js"></script>
+    <script type="text/javascript" src="Js/main.js"></script>
+    <script type="text/javascript" src="Js/main_plot.js"></script>
+    <script type="text/javascript" src="Js/main_special.js"></script>
+</body>
+</html>

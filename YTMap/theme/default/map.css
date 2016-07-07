@@ -1,0 +1,136 @@
+﻿/*通用样式*/
+body { margin:0; padding:0;font: 12px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;}
+ul,li{ padding:0; margin:0;list-style:none; }
+.clearfloat {clear:both;height:0;font-size: 1px;line-height: 0px;}
+
+/*OpenLayers默认样式修改*/
+.olFramedCloudPopupContent { overflow:hidden; }
+
+#mapHeader{ position:absolute; margin:0; width:100%; left:0;top:0;right:0;height:71px; background-color:#aaa;background-repeat:repeat-x;}
+#mapHeader .header { height: 70px; background-image: url(images/header_bg.png); border-bottom:#ccc; overflow: hidden; }
+#mapHeader .header a:link, #mapHeader .header a:visited { color:#fff;}
+#mapHeader .header a:hover { color:#f60; }
+#mapHeader .logo { float: left; font-family: "微软雅黑"; font-size: 36px;letter-spacing:2px; color: #DD8224; margin: 5px 5px; }
+
+#mapMiddle {position:absolute; margin:0; width:100%; left:0;top:71px; right:0; bottom:0; }
+
+#mapLeft{position:absolute; top:0; left:0; bottom:0; width:300px; overflow:auto; background:#FCFCFC; }
+#mapChannel {font-family: 宋体, Arial; font-size:14px; font-weight:bold;  width: auto;clear: both;height: 30px;  margin:10px; }
+#mapChannel ul{padding: 0px;margin: 0px;list-style: none;float:left;}
+#mapChannel li{float: left; cursor:pointer; color: #368; height:27px; line-height:27px; text-align:center; padding: 0 14px 0 14px;  border-bottom:solid 1px #ccc; }
+#mapChannel .checked{border: solid 1px  #ccc;border-bottom:solid 0px #ccc; color:red; }
+#mapChannel .first{ width:3px;padding: 0 5px 0 5px;border-bottom:solid 1px #ccc;}
+#mapChannel .last{ width:3px;padding: 0 5px 0 5px;border-bottom:solid 1px #ccc;}
+
+#leftContent {padding:10px; position:absolute;left:0;right:0;bottom:0;top:40px; padding-bottom:30px; }
+#panelPois { padding:10px; position:absolute;left:0;right:0;bottom:0;top:40px; padding-bottom:30px;background:#fff;display: none; }
+
+.sliderbar_module_title { color:#333; background-color: #F3F3F3; font-size:14px; font-weight: normal; padding: 5px; margin-top: 5px; }
+.sliderbar_module_content { padding: 5px 10px; }
+.sliderbar_module_content ul { list-style-type: none; }
+.sliderbar_module_content li { float: left; font-size:12px; margin-right: 8px; white-space: nowrap; }
+.sliderbar_module_content a { text-decoration: none; color: #368; padding:3px; display:block; }
+.sliderbar_module_content a:hover { color: Red; }   
+
+#mapRight{ position:absolute; top:0;left:300px; bottom:0; right:0; border:solid 1px #B4B4B4;border-top:solid 0px red; border-bottom:solid 0px red; border-right:solid 0px red; background-color:White; }
+#mapDivContainer{position:absolute;bottom:0; top:0px; left:0; right:0; }
+#mapDiv{position:absolute;bottom:0; top:0px; left:0; right:0; width:100%; height:100%; background-color:#eee; }
+
+.mapBorderLeft{background-image:url(images/map_border_left.png); background-repeat:repeat-y; position:absolute;left:0px; top:31px; bottom:0px; width:6px; z-index:20;}
+.mapBorderTop{background-image:url(images/map_border_top.png); background-repeat:repeat-x; position:absolute;left:0px; top:31px; right:0px;height:6px; z-index:20;}
+
+.olControlYTOverviewMapContainer {position: absolute;bottom: 0px;right: 0px;background-color: #FFFFFF;}
+.olControlYTOverviewMapElement { border-left:1px solid #999999 !important;border-top:1px solid #999999 !important;padding-top: 5px !important;padding-left: 5px !important;	}
+.olControlYTOverviewMapMinimizeButton {	right: 0px;	bottom: 0px !important;	bottom: 0px; cursor:pointer;}    
+.olControlYTOverviewMapMaximizeButton {	right: 0px;	bottom: 0px !important;	bottom: 0px;cursor:pointer;}
+.olControlYTOverviewMapExtentRectangle {overflow: hidden;background-image: url("rect.gif");	background-repeat: no-repeat;background-position: center;cursor: move;border: 2px ridge  blue !important;border: 2px ridge  blue;background:#D8DDE9;/*background:#69F;*/filter:alpha(opacity=50);/* IE */ -moz-opacity:0.5;/* Moz + FF */ opacity: 0.5; /* 支持CSS3的浏览器（FF 1.5也支持）*/}
+.olControlYTOverviewMapRectReplacement {overflow: hidden;cursor: move;background-image: url("overview_replacement.gif");background-repeat: no-repeat;background-position: center;} 
+
+.expander-left{position:absolute; background:url(images/expander.png) no-repeat -42px 0;width:16px; height:80px; cursor:pointer; top:50%;left:-1px; margin:-38px 0;  z-index:2000; }
+.expander-left:hover{background-position:-62px 0;}
+.expander-right{position:absolute; background:url(images/expander.png) no-repeat -2px 0;width:16px; height:80px; cursor:pointer; top:50%;left:-1px; margin:-38px 0; z-index:2000; }
+.expander-right:hover{background-position:-22px 0;}
+
+.mapToolsContainer{position:absolute; top:0; left:0; right:0; height:30px; font-size:12px; font-family:Arial; background:url(images/toolbar_bg.png) repeat-x;}
+.mapTools{margin:2px; margin-top:3px; height:26px; float:left; }
+.mapToolsNowCity{float:left; line-height:22px; margin:0 5px; }
+.mapTools li{display:inline; float:left; padding:2px;border:solid 1px transparent; }
+.mapTools li:hover{background-color:#f8f8f8; border:solid 1px #dbdbdb; -webkit-border-radius: 1px;border-radius: 1px; }
+.mapTools a{text-decoration:none; outline:none; padding:2px;}
+.mapTools a:link{color:#333;text-decoration:none;}
+.mapTools a:hover{color:#4c73c2;text-decoration:none;}
+.mapTools a:visited{ color:#333;text-decoration:none; }
+
+.mapTools .tool-move{background:url(images/toollist.png) no-repeat 0px 3px; padding-left:18px; }
+.mapTools .tool-measure-length{background:url(images/toollist.png) no-repeat 0 -22px; padding-left:16px;}
+.mapTools .tool-measure-area{background:url(images/toollist.png) no-repeat 0 -47px;padding-left:18px;}
+.mapTools .tool-print{background:url(images/toollist.png) no-repeat 0 -72px; padding-left:18px;}
+.mapTools .tool-clear{background:url(images/toollist.png) no-repeat 0 -97px; padding-left:18px;}
+.mapTools .tool-fullsrn{background:url(images/toollist.png) no-repeat 0 -121px; padding-left:18px;}
+.mapTools .tool-zoombox{background:url(images/toollist.png) no-repeat 0 -146px; padding-left:18px;}
+.mapTools .tool-search{background:url(images/toollist.png) no-repeat 0 -173px; padding-left:18px;}
+.mapTools .tool-legend{background:url(images/legend.png) no-repeat 0 3px; padding-left:18px;}
+.mapTools .tool-zoomin{background:url(images/zoomin.png) no-repeat 0 3px; padding-left:18px;}
+.mapTools .tool-zoomout{background:url(images/zoomout.png) no-repeat 0 3px; padding-left:18px;}
+.mapTools .tool-layer {background:url(images/tool_layer.png) no-repeat 0 3px; padding-left:18px; }
+
+.mapToolsRight { float:right; }
+#map_stat { position:absolute; right:12px;top:2px;}
+#mapStatType { overflow:hidden;padding:0px;margin:0px;height:22px;border:1px solid #dbcbd3; background-color:#f8fafa; color:#868686;cursor:pointer; }
+#mapStatType ul,#mapStatType li{padding:0;margin:0; display:block;float:left; }
+#mapStatType li {width:50px;height:22px;text-align:center;line-height:22px; }
+#mapStatType.road #road,#mapStatType.satellite #satellite,#mapStatType.panorama #panorama{background-color: #e6edf1;color: #4d4d4d;font-weight: bold; }
+
+/*更换地图*/
+#changeCitysDiv{position:absolute; top:8px; left:2px; width:250px; border:solid 1px #cccccc; background-color:White; display:none;}
+#changeCitysDiv .title{border-bottom: solid 1px #eee; padding:6px;color: #0459AF;font-weight: bold; background-color:#f8f8f8 }
+#mapListContainer{color:#666; line-height:180%; padding:10px; padding-top:0; }
+
+/*右键菜单*/
+.contextmenu{ border:solid 1px #ccc;margin:0; padding:0; width:120px; -moz-user-select:none ;-webkit-user-select:none;}
+.contextmenu ul{padding:0; margin:0; }
+.contextmenu li{ list-style-type:none; margin:0; padding:5px; padding-left:8px; background-color:#fff; cursor:pointer; border-top:solid 1px #eee;}
+.contextmenu li:first-child{border-top:none;}
+.contextmenu li:hover{background-color:#eee; }
+.contextmenu a{display:block;}
+.contextmenu img{border:0; margin-right:5px; width:15px; height:15px; vertical-align:middle; }
+
+.map-select-outer { display:inline-block;*display:inline;zoom:1; border:1px solid #ccc;vertical-align:top;*vertical-align:baseline; }
+.map-select-inner { display:inline-block;*display:inline; zoom:1; height:17px; overflow:hidden; position:relative; border:solid 0px red; }
+.map-select-h { border:1px solid #ccc; height:19px; font-size:12px; position:relative; zoom:1; margin:-1px; }
+.map-select-wh100 { padding:3px;}
+.map-select-wh100 .select-inner { width:62px; }
+.map-select-wh100 select { width:66px; }
+
+/*POI弹出窗口*/
+.poi-dialog{color:#333;min-height:50px; min-width:300px; overflow:hidden; }
+.poi-dialog-title {padding:5px 10px;font-weight: bold;}
+.poi-dialog-title-close { width:16px; height:16px; background-image:url(images/close.gif); cursor:pointer; float:right; }
+.poi-dialog-title-close:hover {  background-image:url(images/close2.gif);}
+.poi-dialog-container { padding:10px; line-height:150%;}
+
+.popup-dialog {display:none;position:absolute;margin-top:10px;min-height:120px;border:solid 1px #cccccc; background-color:#fff; font-size:12px; }
+.popup-dialog-title {padding:5px 10px;font-weight: bold; color:#0459AF; background-color:#f8f8f8; }
+.popup-dialog-title-close { width:16px; height:16px; background-image:url(images/close.gif); cursor:pointer; float:right; }
+.popup-dialog-title-close:hover { background-image:url(images/close2.gif);}
+.popup-dialog-container { color:#666; line-height:180%; padding:10px; padding-top:0;overflow-y:auto;}
+
+/*地图中弹出框里按钮样式*/
+button::-moz-focus-inner{ border:0; padding:0; margin:0; }
+.btn-map{background:url(images/btn2.png) no-repeat; border:0; color: #333;height: 25px;width: 47px;line-height:21px; cursor: pointer;outline:none; }
+.btn-map:hover{background:url(images/btn2.png) no-repeat -52px 0;}
+.btn-map:active{background:url(images/btn2.png) no-repeat -104px 0;-ms-background-position-x: -103px; -ms-background-position-y: 1px;font-weight:bold; }
+
+.searchListIndicator{width:19px; height:29px;background:url(images/markerlist.png) no-repeat}
+
+ #searchResultDiv tr{cursor:pointer; }
+ #searchResultDiv tr:hover{ background-color:#eeeeee;}
+#searchResultDiv a {color:#3385ff}
+
+#poiList ul,li{ list-style:none;}
+#poiList li{ padding:3px; color:#333;}
+#poiList tr:hover{ background-color:#eaf2ff; cursor:pointer; }
+#page {text-indent: 10px; line-height:12px; font-family:宋体; margin-top:10px; }
+#page .curPage{ font-size:13px; color:#333; padding:3px 4px; font-weight:bold; }
+#page a{color:#0781d3; padding: 3px 4px 2px;border:#e7ecf0 solid 1px; outline:0; }
+#page a:hover{color:#0781d3; background-color:#e8f1f6; }
