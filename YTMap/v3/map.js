@@ -28,8 +28,8 @@ function initMap() {
         target: 'mapDiv',
         view: new ol.View({
             projection: 'EPSG:3857',
-            zoom: 2,
-            center: [(mapExtent[2] + mapExtent[0]) / 2, (mapExtent[3] + mapExtent[1]) / 2],
+            zoom: 4,
+            center: [11804325,3854872],
             resolutions: mapResolutions
         })
     });

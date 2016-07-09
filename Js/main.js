@@ -106,7 +106,7 @@ function initLayers() {
 
     $.fn.zTree.init($("#mapTree"), treeSetting, zNodes);
 
-    changeBaseMap("ArcGIS_Streets");
+    changeBaseMap("ArcGIS_Streets");    
 }
 
 //实时查询Tree
